@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/order.css">
+    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Inventory System Entry</title>
+</head>
+<body>
+    <!-- navbar -->
+    <div class="navbar">
+        <div class="navbar-box">
+            <i class="fa-solid fa-bars active" style="color: #0071AF;"></i>
+            <div class="navbar-user">
+                <i class="fa-regular fa-circle-user"></i>
+                <span>User#1</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>    
+    <!--sidebar  -->
+    <div class="sidebar">
+        <h1>Inventory System</h1>
+        <div class="sidebar-box">
+            <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
+            <h2><a href="../index.html">Trang chủ</a></h2>
+        </div>
+        <div class="sidebar-box">
+            <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
+            <h2>Users</h2>
+        </div>
+        <div class="sidebar-box-active">
+            <i class="fa-solid fa-sack-dollar" style="color: var(--white, white);"></i>
+            <h2><a href="../order.html">Orders</a></h2>
+        </div>
+        <div class="sidebar-box">
+            <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
+            <h2><a href="../product.html">Products</a></h2>
+        </div>
+        <div class="sidebar-box">
+            <i class="fa-solid fa-face-smile" style="color: var(--white, #b8c7ce);"></i>
+            <h2>Customers</h2>
+        </div>
+        <div class="sidebar-box">
+            <i class="fa-solid fa-shop" style="color: var(--white, #b8c7ce);"></i>
+            <h2><a href="../brand.html">Brands</a></h2>
+        </div>
+        <div class="sidebar-box">
+            <i class="fa-solid fa-chart-simple" style="color: var(--white, #b8c7ce);"></i>
+            <h2>Reports</h2>
+        </div>
+    </div>
+    
+    <!-- content -->
+    <div class="content">
+        <div class="content-title">
+            <p>Dashboard</p>
+            <ul>
+                <i class="fa-solid fa-palette"></i>
+                <li class="home"><a href="../index.html">Home</a></li>
+                <li> > </li>
+                <li>Orders</li>
+                <li> > </li>
+                <li>Change Entry</li>
+            </ul>
+        </div>
+
+        <!-- Dashboard orders information -->
+        <div class="output-detail">
+            <form action="">
+                <!-- output information-->
+                <div class="require-info">
+                    <div class="output-detail-box">
+                        <label for="outputID">Mã phiếu nhập</label>
+                        <input name ="outputID" id="outputID" type="text">
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="outputID">Ngày nhập phiếu</label>
+                        <input name ="outputID" id="outputID" type="date">
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="outputID">Mã nhân viên</label>
+                        <select name="employeeID" id="employeeID">
+                            <option value="">NV1</option>
+                            <option value="">nv2</option>
+                            <option value="">nv3</option>
+                            <option value="">NV4</option>
+                        </select>
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="outputID">Mã nhà cung cấp</label>
+                        <select name="cars" id="cars">
+                            <option value="">NCC1</option>
+                            <option value="">NCC2</option>
+                            <option value="">NCC3</option>
+                            <option value="">NCC4</option>
+                        </select>
+                    </div>
+                    
+                </div>
+
+                <!-- dynamic input -->
+                <div class="dynamic-input">
+                    <div class="output-detail-box">
+                        <label for="outputID">Mã sản phẩm</label>
+                        <select name="productID" id="productID">
+                            <option value="">20D</option>
+                            <option value="">001</option>
+                            <option value="">002</option>
+                            <option value="">003</option>
+                        </select>
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="outputPrice">Giá nhập</label>
+                        <input name ="outputPrice" id="outputPrice" type="text">
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="outputNumber">Số lượng nhập</label>
+                        <input name ="outputNumber" id="outputNumber" type="number">
+                    </div>
+
+                </div>    
+                <i class="add">+</i>
+                <button type = "submit" name = "submit">Thêm mới</button>
+            </form>
+        </div>
+
+        
+    </div>
+    <script src="/js/index.js"></script>
+    <script src="/js/order.js"></script>
+    <script src="/js/output.js"></script>
+</body>
+</html>
