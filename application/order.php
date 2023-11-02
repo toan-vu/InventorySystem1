@@ -1,11 +1,18 @@
+<?php
+require_once '../process/connect.php';
+$getinf = new Query();
+$orders = $getinf->order();
+$imports = $getinf->import();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/order.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/order.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Inventory System Orders</title>
 </head>
@@ -26,7 +33,7 @@
         <h1>Inventory System</h1>
         <div class="sidebar-box">
             <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
-            <h2><a href="index.html">Trang chủ</a></h2>
+            <h2><a href="index.php">Trang chủ</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
@@ -34,11 +41,11 @@
         </div>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, white);"></i>
-            <h2><a href="order.html">Orders</a></h2>
+            <h2><a href="order.php">Orders</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="product.html">Products</a></h2>
+            <h2><a href="product.php">Products</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-face-smile" style="color: var(--white, #b8c7ce);"></i>
@@ -46,7 +53,7 @@
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-shop" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="brand.html">Brands</a></h2>
+            <h2><a href="brand.php">Brands</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-chart-simple" style="color: var(--white, #b8c7ce);"></i>
@@ -57,10 +64,10 @@
     <!-- content -->
     <div class="content">
         <div class="content-title">
-            <p>Dashboard</p>
+            <p>Orders</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
-                <li class="home"><a href="index.html">Home</a></li>
+                <li class="home"><a href="index.php">Home</a></li>
                 <li> > </li>
                 <li>Orders</li>
             </ul>
@@ -69,7 +76,7 @@
         <!-- Dashboard orders information -->
         <div class="order-list">
             <div class="add-order">
-                <button class="add-order-button" name=""><a href="create/entry.html">Tạo đơn nhập</a></button>
+                <button class="add-order-button" name=""><a href="create/entry.php">Tạo đơn nhập</a></button>
                 <button class="add-order-button" name=""><a href="create/output.html">Tạo đơn xuất</a></button>
             </div>
             <div class="order-list-option">
@@ -104,14 +111,17 @@
                             <th>Tuỳ chọn</th>
                         </tr>
 
+                        <?php
+                        $i = 1;
+                        foreach ($imports as $import): ?>
                         <tr>
-                            <td><a href=""></a>nhap</td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
+                            <td><a href=""></a><?php echo $import["import_ID"] ?></td>
+                            <td><a href=""></a><?php echo $import["import_date"] ?></td>
+                            <td><a href=""></a><?php echo $import["import_price"] ?></td>
+                            <td><a href=""></a><?php echo $import["import_quantity"] ?></td>
+                            <td><a href=""></a><?php echo $import["supplier_ID"] ?></td>
+                            <td><a href=""></a><?php echo $import["product_ID"] ?></td>
+                            <td><a href=""></a><?php echo $import["user_ID"] ?></td>
                             <td>
                                 <a href=""><i class="fa-regular fa-eye"></i></a>
                                 <a href="create/change_entry.html"><i class="fa-solid fa-pencil"></i></a>
@@ -131,6 +141,7 @@
 
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>
@@ -161,14 +172,17 @@
                             <th>Tuỳ chọn</th>
                         </tr>
 
+                        <?php
+                        $i = 1;
+                        foreach ($orders as $order): ?>
                         <tr>
-                            <td><a href=""></a>xuat</td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
-                            <td><a href=""></a></td>
+                            <td><a href=""></a><?php echo $order["export_ID"] ?></td>
+                            <td><a href=""></a></a><?php echo $order["export_date"] ?></td>
+                            <td><a href=""></a><?php echo $order["export_price"] ?></td>
+                            <td><a href=""></a><?php echo $order["export_quantity"] ?></td>
+                            <td><a href=""></a><?php echo $order["product_ID"] ?></td>
+                            <td><a href=""></a><?php echo $order["user_ID"] ?></td>
+                            <td><a href=""></a><?php echo $order["customer_ID"] ?></td>
                             <td>
                                 <a href=""><i class="fa-regular fa-eye"></i></a>
                                 <a href="create/change_output.html"><i class="fa-solid fa-pencil"></i></a>
@@ -188,6 +202,7 @@
 
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>
@@ -196,8 +211,8 @@
 
         
     </div>
-    <script src="/js/index.js"></script>
-    <script src="/js/order.js"></script>
-    <script src="/js/deleteConfirm.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/order.js"></script>
+    <script src="../js/deleteConfirm.js"></script>
 </body>
 </html>
