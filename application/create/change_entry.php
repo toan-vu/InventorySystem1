@@ -45,7 +45,7 @@ $products = $getinf->product();
         </div>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, white);"></i>
-            <h2><a href="../order.php">Orders</a></h2>
+            <h2><a href="../order.php">Import/Export</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
@@ -73,7 +73,7 @@ $products = $getinf->product();
                 <i class="fa-solid fa-palette"></i>
                 <li class="home"><a href="../index.php">Home</a></li>
                 <li> > </li>
-                <li>Orders</li>
+                <li>Import/Export</li>
                 <li> > </li>
                 <li>Change Entry</li>
             </ul>

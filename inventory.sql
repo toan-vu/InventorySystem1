@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 04, 2023 lúc 10:24 AM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Nov 04, 2023 at 03:47 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,297 +18,272 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `inventory`
+-- Database: `inventory`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `account`
+-- Table structure for table `account`
 --
 
 CREATE TABLE `account` (
+  `account_ID` char(6) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `user_id` varchar(255) NOT NULL,
+  `user_id` char(6) NOT NULL,
   `password` varchar(255) NOT NULL,
   `user_role` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `account`
+-- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`username`, `email`, `user_id`, `password`, `user_role`) VALUES
-('', 'admin@gmail.com', '', '12345', ''),
-('', 'admin1@gmail.com', '', '12345', ''),
-('tin', 'admin12@gmail.com', '', '$2y$10$ICMqZO.Yr1M49pS7dubgnecozzWn.GGQGRQnVtoEeNFiMtW.Wqzlq', 'user');
+INSERT INTO `account` (`account_ID`, `username`, `email`, `user_id`, `password`, `user_role`) VALUES
+('', 'User3', 'vdt98765@gmail.com', '', '$2y$10$B6cAfA.pDFwJXGpBxuU/mOKhP7SibX7mUJZRKHcP7yEu6GfsIikDe', 'user'),
+('Acc001', 'User1', 'admin@gmail.com', 'U00001', '12345', 'user'),
+('Acc002', 'User2', 'admin1@gmail.com', 'U00002', '12345', 'user'),
+('Acc003', 'tin', 'admin12@gmail.com', 'U00003', '$2y$10$ICMqZO.Yr1M49pS7dubgnecozzWn.GGQGRQnVtoEeNFiMtW.Wqzlq', 'user');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
-  `customer_id` int(10) UNSIGNED NOT NULL,
-  `customer_name` varchar(255) NOT NULL,
-  `customer_address` varchar(255) NOT NULL,
-  `customer_phone` varchar(15) NOT NULL,
-  `customer_mail` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `customer_ID` char(6) NOT NULL,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `customer_address` varchar(255) DEFAULT NULL,
+  `customer_phone` char(10) DEFAULT NULL,
+  `customer_mail` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `customer`
+-- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_address`, `customer_phone`, `customer_mail`) VALUES
-(1, 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
-(2, 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com'),
-(3, 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
-(4, 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com'),
-(5, 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
-(6, 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com'),
-(7, 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
-(8, 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com');
+INSERT INTO `customer` (`customer_ID`, `customer_name`, `customer_address`, `customer_phone`, `customer_mail`) VALUES
+('C00001', 'Nguyễn Người Mua', 'Trái đất', '0332209801', 'ngmua@gmail.com'),
+('C00002', 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
+('C00003', 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com'),
+('C00004', 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
+('C00005', 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com'),
+('C00006', 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
+('C00007', 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com'),
+('C00008', 'Nguyễn Văn A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'nguyenvana@example.com'),
+('C00009', 'Trần Thị B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'tranthibb@example.com');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `export`
+-- Table structure for table `export`
 --
 
 CREATE TABLE `export` (
-  `export_id` int(10) UNSIGNED NOT NULL,
-  `export_date` date NOT NULL,
-  `export_price` decimal(10,2) NOT NULL,
-  `export_quantity` int(11) NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `customer_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `export_ID` char(6) NOT NULL,
+  `export_date` date DEFAULT NULL,
+  `export_price` float DEFAULT NULL,
+  `export_quantity` int(11) DEFAULT NULL,
+  `product_ID` char(6) NOT NULL,
+  `user_ID` char(6) NOT NULL,
+  `customer_ID` char(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `export`
+--
+
+INSERT INTO `export` (`export_ID`, `export_date`, `export_price`, `export_quantity`, `product_ID`, `user_ID`, `customer_ID`) VALUES
+('E00001', '2023-11-01', 10, 2, 'A00001', 'U00002', 'C00001'),
+('E00002', '2023-11-01', 15, 1, 'A00001', 'U00001', 'C00001'),
+('E00003', '2023-11-02', 10, 5, 'A00001', 'U00002', 'C00001');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `import`
+-- Table structure for table `import`
 --
 
 CREATE TABLE `import` (
-  `import_id` int(10) UNSIGNED NOT NULL,
-  `import_date` date NOT NULL,
-  `import_price` decimal(10,2) NOT NULL,
-  `import_quantity` int(11) NOT NULL,
-  `supplier_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `import_ID` char(6) NOT NULL,
+  `import_date` date DEFAULT NULL,
+  `import_price` float DEFAULT NULL,
+  `import_quantity` int(11) DEFAULT NULL,
+  `supplier_ID` char(6) NOT NULL,
+  `product_ID` char(6) NOT NULL,
+  `user_ID` char(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `import`
+--
+
+INSERT INTO `import` (`import_ID`, `import_date`, `import_price`, `import_quantity`, `supplier_ID`, `product_ID`, `user_ID`) VALUES
+('B00001', '2023-11-01', 10, 20, 'S00001', 'A00001', 'U00001'),
+('B00004', '2023-11-01', 500, 20, 'S00001', 'A00001', 'U00002');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_category` varchar(255) NOT NULL,
-  `product_price` decimal(10,2) NOT NULL,
-  `product_quantity` int(11) NOT NULL,
-  `product_status` varchar(255) NOT NULL,
-  `supplier_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `product_ID` char(6) NOT NULL,
+  `product_name` varchar(255) DEFAULT NULL,
+  `product_category` varchar(50) DEFAULT NULL,
+  `product_quantity` int(11) DEFAULT NULL,
+  `product_status` varchar(20) DEFAULT NULL,
+  `product_price` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_name`, `product_category`, `product_price`, `product_quantity`, `product_status`, `supplier_id`) VALUES
-(1, 'Máy tính xách tay', 'Điện tử', 20000000.00, 100, 'Còn hàng', 1),
-(2, 'Điện thoại thông minh', 'Điện tử', 10000000.00, 200, 'Còn hàng', 1),
-(3, 'Tivi', 'Điện tử', 30000000.00, 50, 'Còn hàng', 1),
-(4, 'Tủ lạnh', 'Điện tử', 25000000.00, 100, 'Còn hàng', 2),
-(5, 'Máy giặt', 'Điện tử', 20000000.00, 200, 'Còn hàng', 2),
-(6, 'Máy tính xách tay', 'Điện tử', 20000000.00, 100, 'Còn hàng', 1),
-(7, 'Điện thoại thông minh', 'Điện tử', 10000000.00, 200, 'Còn hàng', 1),
-(8, 'Tivi', 'Điện tử', 30000000.00, 50, 'Còn hàng', 1),
-(9, 'Tủ lạnh', 'Điện tử', 25000000.00, 100, 'Còn hàng', 2),
-(10, 'Máy giặt', 'Điện tử', 20000000.00, 200, 'Còn hàng', 2),
-(11, 'Máy tính xách tay', 'Điện tử', 20000000.00, 100, 'Còn hàng', 1),
-(12, 'Điện thoại thông minh', 'Điện tử', 10000000.00, 200, 'Còn hàng', 1),
-(13, 'Tivi', 'Điện tử', 30000000.00, 50, 'Còn hàng', 1),
-(14, 'Tủ lạnh', 'Điện tử', 25000000.00, 100, 'Còn hàng', 2),
-(15, 'Máy giặt', 'Điện tử', 20000000.00, 200, 'Còn hàng', 2),
-(16, 'Máy tính xách tay', 'Điện tử', 20000000.00, 100, 'Còn hàng', 1),
-(17, 'Điện thoại thông minh', 'Điện tử', 10000000.00, 200, 'Còn hàng', 1),
-(18, 'Tivi', 'Điện tử', 30000000.00, 50, 'Còn hàng', 1),
-(19, 'Tủ lạnh', 'Điện tử', 25000000.00, 100, 'Còn hàng', 2),
-(20, 'Máy giặt', 'Điện tử', 20000000.00, 200, 'Còn hàng', 2);
+INSERT INTO `product` (`product_ID`, `product_name`, `product_category`, `product_quantity`, `product_status`, `product_price`) VALUES
+('A00001', 'Áo len', 'Áo', 10, 'Còn hàng', 10.11),
+('A00002', 'Quần bò', 'Quần', 20, 'Sale', 10),
+('A0003', 'Máy tính xách tay', 'Điện tử', 100, 'Còn hàng', 20000000),
+('A0004', 'Điện thoại thông minh', 'Điện tử', 200, 'Còn hàng', 10000000),
+('A0005', 'Tivi', 'Điện tử', 50, 'Còn hàng', 30000000),
+('A0006', 'Tủ lạnh', 'Điện tử', 100, 'Còn hàng', 25000000),
+('A0007', 'Máy giặt', 'Điện tử', 200, 'Còn hàng', 20000000),
+('A0008', 'Máy tính xách tay', 'Điện tử', 100, 'Còn hàng', 20000000),
+('A0009', 'Điện thoại thông minh', 'Điện tử', 200, 'Còn hàng', 10000000),
+('A0010', 'Tivi', 'Điện tử', 50, 'Còn hàng', 30000000),
+('A0011', 'Tủ lạnh', 'Điện tử', 100, 'Còn hàng', 25000000),
+('A0012', 'Máy giặt', 'Điện tử', 200, 'Còn hàng', 20000000),
+('A0013', 'Máy tính xách tay', 'Điện tử', 100, 'Còn hàng', 20000000);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
-  `supplier_id` int(10) UNSIGNED NOT NULL,
-  `supplier_name` varchar(255) NOT NULL,
-  `supplier_address` varchar(255) NOT NULL,
-  `supplier_phone` varchar(15) NOT NULL,
-  `supplier_mail` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `supplier_ID` char(6) NOT NULL,
+  `supplier_name` varchar(255) DEFAULT NULL,
+  `supplier_address` varchar(255) DEFAULT NULL,
+  `supplier_phone` char(10) DEFAULT NULL,
+  `supplier_mail` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `supplier`
+-- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_address`, `supplier_phone`, `supplier_mail`) VALUES
-(1, 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
-(2, 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com'),
-(3, 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
-(4, 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com'),
-(5, 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
-(6, 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com'),
-(7, 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
-(8, 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com');
+INSERT INTO `supplier` (`supplier_ID`, `supplier_name`, `supplier_address`, `supplier_phone`, `supplier_mail`) VALUES
+('S00001', 'Sỉ lẻ áo', 'ABC - DEF', '19001009', 'abc@gamil.com'),
+('S00002', 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
+('S00003', 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com'),
+('S00004', 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
+('S00005', 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com'),
+('S00006', 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
+('S00007', 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com'),
+('S00008', 'Công ty A', '123 ABC Street, Ho Chi Minh City, Vietnam', '0912345678', 'companya@example.com'),
+('S00009', 'Công ty B', '456 DEF Street, Hanoi, Vietnam', '0923456789', 'companyb@example.com');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `user_first_name` varchar(255) NOT NULL,
-  `user_last_name` varchar(255) NOT NULL,
-  `user_address` varchar(255) NOT NULL,
-  `user_department` varchar(255) NOT NULL,
-  `user_office` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `user_ID` char(6) NOT NULL,
+  `user_first_name` varchar(255) DEFAULT NULL,
+  `user_last_name` varchar(255) DEFAULT NULL,
+  `user_address` varchar(255) DEFAULT NULL,
+  `user_office` varchar(50) DEFAULT NULL,
+  `user_department` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_first_name`, `user_last_name`, `user_address`, `user_department`, `user_office`) VALUES
-(1, 'Nguyễn Văn A', 'Bình', '123 ABC Street, Ho Chi Minh City, Vietnam', 'Sale', '101'),
-(2, 'Trần Thị B', 'Chung', '456 DEF Street, Hanoi, Vietnam', 'Marketing', '202');
+INSERT INTO `user` (`user_ID`, `user_first_name`, `user_last_name`, `user_address`, `user_office`, `user_department`) VALUES
+('U00001', 'Nguyễn Văn ', 'A', 'Hà Nội', 'Cơ sở 1', 'Nhà 1'),
+('U00002', 'Nguyễn Văn ', 'B', 'ABC', 'Cơ sở 1', 'Nhà 2'),
+('U00003', 'Nguyễn Văn', 'Bình', '123 ABC Street, Ho Chi Minh City, Vietnam', '101', 'Sale'),
+('U00004', 'Trần Thị', 'Chung', '456 DEF Street, Hanoi, Vietnam', '202', 'Marketing');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `customer`
+-- Indexes for table `account`
 --
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_id`);
-
---
--- Chỉ mục cho bảng `export`
---
-ALTER TABLE `export`
-  ADD PRIMARY KEY (`export_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `customer_id` (`customer_id`),
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`account_ID`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `import`
---
-ALTER TABLE `import`
-  ADD PRIMARY KEY (`import_id`),
-  ADD KEY `supplier_id` (`supplier_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Chỉ mục cho bảng `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `supplier_id` (`supplier_id`);
-
---
--- Chỉ mục cho bảng `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`supplier_id`);
-
---
--- Chỉ mục cho bảng `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  ADD PRIMARY KEY (`customer_ID`);
 
 --
--- AUTO_INCREMENT cho bảng `export`
+-- Indexes for table `export`
 --
 ALTER TABLE `export`
-  MODIFY `export_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ADD PRIMARY KEY (`export_ID`),
+  ADD KEY `export_ibfk_1` (`user_ID`),
+  ADD KEY `export_ibfk_2` (`customer_ID`),
+  ADD KEY `export_ibfk_3` (`product_ID`);
 
 --
--- AUTO_INCREMENT cho bảng `import`
+-- Indexes for table `import`
 --
 ALTER TABLE `import`
-  MODIFY `import_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ADD PRIMARY KEY (`import_ID`),
+  ADD KEY `import_ibfk_2` (`supplier_ID`),
+  ADD KEY `import_ibfk_3` (`product_ID`),
+  ADD KEY `import_ibfk_4` (`user_ID`);
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  ADD PRIMARY KEY (`product_ID`);
 
 --
--- AUTO_INCREMENT cho bảng `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supplier_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  ADD PRIMARY KEY (`supplier_ID`);
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ADD PRIMARY KEY (`user_ID`);
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `export`
+-- Constraints for table `export`
 --
 ALTER TABLE `export`
-  ADD CONSTRAINT `export_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  ADD CONSTRAINT `export_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
-  ADD CONSTRAINT `export_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `export_ibfk_1` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `export_ibfk_2` FOREIGN KEY (`customer_ID`) REFERENCES `customer` (`customer_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `export_ibfk_3` FOREIGN KEY (`product_ID`) REFERENCES `product` (`product_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `import`
+-- Constraints for table `import`
 --
 ALTER TABLE `import`
-  ADD CONSTRAINT `import_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`),
-  ADD CONSTRAINT `import_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  ADD CONSTRAINT `import_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
-
---
--- Các ràng buộc cho bảng `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`);
+  ADD CONSTRAINT `import_ibfk_2` FOREIGN KEY (`supplier_ID`) REFERENCES `supplier` (`supplier_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `import_ibfk_3` FOREIGN KEY (`product_ID`) REFERENCES `product` (`product_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `import_ibfk_4` FOREIGN KEY (`user_ID`) REFERENCES `user` (`user_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

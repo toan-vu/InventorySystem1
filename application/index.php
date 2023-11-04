@@ -35,7 +35,7 @@ $brands = $getinf->brand();
         <h1>Inventory System</h1>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-house" style="color: white;"></i>
-            <h2><a href="index.php">Trang chủ</a></h2>
+            <h2><a href="index.php">Home</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
@@ -43,7 +43,7 @@ $brands = $getinf->brand();
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="order.php">Orders</a></h2>
+            <h2><a href="order.php">Import/Export</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
@@ -79,7 +79,7 @@ $brands = $getinf->brand();
         <div class="dashboard">
             <div class="dashboard-box">
                 <span><?php echo count($orders) + count($imports) ?></span>
-                <p>Total Orders</p>
+                <p>Total Import/Export</p>
                 <a href="order.php">More info</a>
                 <i class="fa-regular fa-circle-right"></i>
             </div>

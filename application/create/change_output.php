@@ -38,7 +38,7 @@ $customers = $getinf->customer();
         <h1>Inventory System</h1>
         <div class="sidebar-box">
             <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
-            <h2><a href="../index.php">Trang chủ</a></h2>
+            <h2><a href="../index.php">Home</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
@@ -46,7 +46,7 @@ $customers = $getinf->customer();
         </div>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, white);"></i>
-            <h2><a href="../order.php">Orders</a></h2>
+            <h2><a href="../order.php">Import/Export</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
@@ -74,7 +74,7 @@ $customers = $getinf->customer();
                 <i class="fa-solid fa-palette"></i>
                 <li class="home"><a href="../index.php">Home</a></li>
                 <li> > </li>
-                <li>Orders</li>
+                <li>Import/Export</li>
                 <li> > </li>
                 <li>Change Output</li>
             </ul>
