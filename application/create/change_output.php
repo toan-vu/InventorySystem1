@@ -1,12 +1,23 @@
+<?php
+require_once '../../process/connect.php';
+$id = $_GET['id'];
+$getinf = new Query();
+$outputs = $getinf->selectOutput($id);
+$users = $getinf->user();
+$brands = $getinf->brand();
+$products = $getinf->product();
+$customers = $getinf->customer();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/order.css">
-    <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/order.css">
+    <link rel="stylesheet" href="../../css/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Inventory System Output</title>
 </head>
@@ -27,7 +38,7 @@
         <h1>Inventory System</h1>
         <div class="sidebar-box">
             <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
-            <h2><a href="../index.html">Trang chủ</a></h2>
+            <h2><a href="../index.php">Trang chủ</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
@@ -35,11 +46,11 @@
         </div>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, white);"></i>
-            <h2><a href="../order.html">Orders</a></h2>
+            <h2><a href="../order.php">Orders</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="../product.html">Products</a></h2>
+            <h2><a href="../product.php">Products</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-face-smile" style="color: var(--white, #b8c7ce);"></i>
@@ -47,7 +58,7 @@
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-shop" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="../brand.html">Brands</a></h2>
+            <h2><a href="../brand.php">Brands</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-chart-simple" style="color: var(--white, #b8c7ce);"></i>
@@ -61,7 +72,7 @@
             <p>Change output</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
-                <li class="home"><a href="../index.html">Home</a></li>
+                <li class="home"><a href="../index.php">Home</a></li>
                 <li> > </li>
                 <li>Orders</li>
                 <li> > </li>
@@ -70,37 +81,46 @@
         </div>
 
         <!-- Dashboard output information -->
+        <?php
+            foreach ($outputs as $output): ?>
         <div class="output-detail">
-            <form action="">
+            <form action="../../process/process_change_output.php" method="post" autocomplete="off" enctype="multipart/form-data">
                 <!-- output information-->
                 <div class="require-info">
+                <input type="hidden" value="<?= $output['export_ID'] ?>" name = "id">
                     <div class="output-detail-box">
                         <label for="outputID">Mã phiếu xuất</label>
-                        <input name ="outputID" id="outputID" type="text">
+                        <input name ="outputID" id="outputID" type="text" value = "<?= $output['export_ID'] ?>">
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputID">Ngày xuất phiếu</label>
-                        <input name ="outputID" id="outputID" type="date">
+                        <label for="date">Ngày xuất phiếu</label>
+                        <input name ="date" id="date" type="date" value = "<?= $output['export_date'] ?>">
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputID">Mã nhân viên</label>
+                        <label for="employeeID">Mã nhân viên</label>
                         <select name="employeeID" id="employeeID">
-                            <option value="">NV1</option>
-                            <option value="">nv2</option>
-                            <option value="">nv3</option>
-                            <option value="">NV4</option>
+                        <option value="<?php echo $output["user_ID"] ?>"><?php echo $output["user_ID"] ?></option>
+
+                        <?php
+                        foreach ($users as $user): ?>
+                            <option value="<?php echo $user["user_ID"] ?>"><?php echo $user["user_ID"] ?></option>
+                        <?php endforeach; ?>
+
                         </select>
                     </div>
 
                     <div class="output-detail-box">
                         <label for="outputID">Mã khách hàng</label>
-                        <select name="cars" id="cars">
-                            <option value="">KH1</option>
-                            <option value="">KH2</option>
-                            <option value="">KH3</option>
-                            <option value="">KH4</option>
+                        <select name="customer" id="customer">
+                        <option value="<?php echo $output["customer_ID"] ?>"><?php echo $output["customer_ID"] ?></option>
+
+                        <?php
+                        foreach ($customers as $customer): ?>
+                            <option value="<?php echo $customer["customer_ID"] ?>"><?php echo $customer["customer_ID"] ?></option>
+                        <?php endforeach; ?>
+
                         </select>
                     </div>
                     
@@ -111,35 +131,38 @@
                     <div class="output-detail-box">
                         <label for="outputID">Mã sản phẩm</label>
                         <select name="productID" id="productID">
-                            <option value="">20D</option>
-                            <option value="">001</option>
-                            <option value="">002</option>
-                            <option value="">003</option>
+                        <option value="<?php echo $output["product_ID"] ?>"><?php echo $output["product_ID"] ?></option>
+
+                        <?php
+                        foreach ($products as $product): ?>
+                            <option value="<?php echo $product["product_ID"] ?>"><?php echo $product["product_ID"] ?></option>
+                        <?php endforeach; ?>
+
                         </select>
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputPrice">Giá xuất</label>
-                        <input name ="outputPrice" id="outputPrice" type="text">
+                        <label for="price">Giá xuất</label>
+                        <input name ="price" id="price" type="text" value = "<?= $output['export_price'] ?>">
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputNumber">Số lượng xuất</label>
-                        <input name ="outputNumber" id="outputNumber" type="number">
+                        <label for="number">Số lượng xuất</label>
+                        <input name ="number" id="number" type="number" value = "<?= $output['export_quantity'] ?>">
                     </div>
 
                 </div>    
                 <i class="add">+</i>
-                <button type = "submit" name = "submit">Thêm mới</button>
+                <button type = "submit" name = "submit">Cập nhật</button>
             </form>
         </div>
-        
+        <?php endforeach; ?>
         
 
         
     </div>
-    <script src="/js/index.js"></script>
-    <script src="/js/order.js"></script>
-    <script src="/js/output.js"></script>
+    <script src="../../js/index.js"></script>
+    <script src="../../js/order.js"></script>
+    <script src="../../js/output.js"></script>
 </body>
 </html>

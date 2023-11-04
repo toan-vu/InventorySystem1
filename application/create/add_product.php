@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/order.css">
     <link rel="stylesheet" href="../../css/output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Inventory System Output</title>
+    <title>Inventory System Add Brand</title>
 </head>
 <body>
     <!-- navbar -->
@@ -27,19 +27,19 @@
         <h1>Inventory System</h1>
         <div class="sidebar-box">
             <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
-            <h2><a href="../index.html">Trang chủ</a></h2>
+            <h2><a href="../index.php">Trang chủ</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
             <h2>Users</h2>
         </div>
-        <div class="sidebar-box-active">
-            <i class="fa-solid fa-sack-dollar" style="color: var(--white, white);"></i>
-            <h2><a href="../order.html">Orders</a></h2>
-        </div>
         <div class="sidebar-box">
-            <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="../product.html">Products</a></h2>
+            <i class="fa-solid fa-sack-dollar" style="color: var(--white, #b8c7ce);"></i>
+            <h2><a href="../order.php">Orders</a></h2>
+        </div>
+        <div class="sidebar-box-active">
+            <i class="fa-solid fa-gear" style="color: var(--white, white);"></i>
+            <h2><a href="../product.php">Products</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-face-smile" style="color: var(--white, #b8c7ce);"></i>
@@ -47,7 +47,7 @@
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-shop" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="../brand.html">Brands</a></h2>
+            <h2><a href="../brand.php">Brands</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-chart-simple" style="color: var(--white, #b8c7ce);"></i>
@@ -58,78 +58,56 @@
     <!-- content -->
     <div class="content">
         <div class="content-title">
-            <p>Dashboard</p>
+            <p>Add product</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
-                <li class="home"><a href="../index.html">Home</a></li>
+                <li class="home"><a href="../index.php">Home</a></li>
                 <li> > </li>
-                <li>Orders</li>
+                <li>Brands</li>
                 <li> > </li>
-                <li>Output</li>
+                <li>Add Product</li>
             </ul>
         </div>
 
         <!-- Dashboard output information -->
         <div class="output-detail">
-            <form action="../../process/process_entry.php">
+            <form action="../../process/process_brand.php" method="post" autocomplete="off" enctype="multipart/form-data">
                 <!-- output information-->
                 <div class="require-info">
                     <div class="output-detail-box">
-                        <label for="outputID">Mã phiếu xuất</label>
-                        <input name ="outputID" id="outputID" type="text">
+                        <label for="id">Mã sản phẩm</label>
+                        <input name ="id" id="id" type="text">
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputID">Ngày xuất phiếu</label>
-                        <input name ="outputID" id="outputID" type="date">
+                        <label for="name">Tên sản phẩm</label>
+                        <input name ="name" id="name" type="text">
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputID">Mã nhân viên</label>
-                        <select name="employeeID" id="employeeID">
-                            <option value="">NV1</option>
-                            <option value="">nv2</option>
-                            <option value="">nv3</option>
-                            <option value="">NV4</option>
-                        </select>
-                    </div>
-
-                    <div class="output-detail-box">
-                        <label for="outputID">Mã khách hàng</label>
-                        <select name="cars" id="cars">
-                            <option value="">KH1</option>
-                            <option value="">KH2</option>
-                            <option value="">KH3</option>
-                            <option value="">KH4</option>
-                        </select>
+                        <label for="category">Danh mục sản phẩm</label>
+                        <input name ="category" id="category" type="text">
                     </div>
                     
-                </div>
-
-                <!-- dynamic input -->
-                <div class="dynamic-input">
                     <div class="output-detail-box">
-                        <label for="outputID">Mã sản phẩm</label>
-                        <select name="productID" id="productID">
-                            <option value="">20D</option>
-                            <option value="">001</option>
-                            <option value="">002</option>
-                            <option value="">003</option>
+                        <label for="number">Số lượng sản phấm</label>
+                        <input name ="number" id="number" type="number">
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="status">Trạng thái sản phẩm</label>
+                        <select name="status" id="status">
+                            <option value="Sale">Sale</option>
+                            <option value="Có hàng">Có hàng</option>
+                            <option value="Hết hàng">Hết hàng</option>
                         </select>
                     </div>
 
                     <div class="output-detail-box">
-                        <label for="outputPrice">Giá xuất</label>
-                        <input name ="outputPrice" id="outputPrice" type="text">
+                        <label for="price">Giá sản phấm</label>
+                        <input name ="price" id="price" type="type">
                     </div>
-
-                    <div class="output-detail-box">
-                        <label for="outputNumber">Số lượng xuất</label>
-                        <input name ="outputNumber" id="outputNumber" type="number">
-                    </div>
-
-                </div>    
-                <i class="add">+</i>
+                </div>
                 <button type = "submit" name = "submit">Thêm mới</button>
             </form>
         </div>
@@ -140,6 +118,5 @@
     </div>
     <script src="../../js/index.js"></script>
     <script src="../../js/order.js"></script>
-    <script src="../../js/output.js"></script>
 </body>
 </html>

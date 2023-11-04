@@ -75,7 +75,7 @@ $products = $getinf->product();
         <!-- Dashboard orders information -->
         <div class="order-list">
             <div class="add-order">
-                <button class="add-order-button" name=""><a href="create/add_product.html">Thêm mặt hàng</a></button>
+                <button class="add-order-button" name=""><a href="create/add_product.php">Thêm mặt hàng</a></button>
             </div>
             <div class="order-list-option">
                 <button class="order-list-button active button" name="">Danh sách hàng hoá</button>

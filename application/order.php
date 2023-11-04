@@ -77,7 +77,7 @@ $imports = $getinf->import();
         <div class="order-list">
             <div class="add-order">
                 <button class="add-order-button" name=""><a href="create/entry.php">Tạo đơn nhập</a></button>
-                <button class="add-order-button" name=""><a href="create/output.html">Tạo đơn xuất</a></button>
+                <button class="add-order-button" name=""><a href="create/output.php">Tạo đơn xuất</a></button>
             </div>
             <div class="order-list-option">
                 <button class="order-list-button active button" name="">Đơn nhập</button>
@@ -112,7 +112,6 @@ $imports = $getinf->import();
                         </tr>
 
                         <?php
-                        $i = 1;
                         foreach ($imports as $import): ?>
                         <tr>
                             <td><a href=""></a><?php echo $import["import_ID"] ?></td>
@@ -124,22 +123,24 @@ $imports = $getinf->import();
                             <td><a href=""></a><?php echo $import["user_ID"] ?></td>
                             <td>
                                 <a href=""><i class="fa-regular fa-eye"></i></a>
-                                <a href="create/change_entry.html"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="create/change_entry.php?id=<?= $import['import_ID'] ?>"><i class="fa-solid fa-pencil"></i></a>
                                 <i onclick="confirmDelete()" class="fa-solid fa-trash-can"></i>
+                            </td>    
                                 <!-- delete form -->
                                 <div class="confirm-delete-popup">
                                     <span>XOÁ PHIẾU NHẬP ĐÃ CHỌN?</span>
                                     <p>Bạn có chắc chắn muốn xoá phiếu nhập đã chọn không ?</p>
                                     <div class="confirm-popup-button">
                                         <button class="confirm-popup-cancel" onclick="closeDeletePopup()">Huỷ bỏ</button>
-                                        <form method="POST" action="">
-                                        <input type="hidden" value="" name="id">
+
+                                        <form method="post" action="../process/delete_entry.php">
+                                        <input type="hidden" value="<?php echo $import["import_ID"] ?>" name="id">
                                         <button type = "submit" class="confirm-popup-delete">Xác nhận</button>
                                         </form>
                                     </div>
                                 </div>
 
-                            </td>
+                            
                         </tr>
                         <?php endforeach; ?>
                     </table>
@@ -185,16 +186,16 @@ $imports = $getinf->import();
                             <td><a href=""></a><?php echo $order["customer_ID"] ?></td>
                             <td>
                                 <a href=""><i class="fa-regular fa-eye"></i></a>
-                                <a href="create/change_output.html"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="create/change_output.php?id=<?= $order['export_ID'] ?>"><i class="fa-solid fa-pencil"></i></a>
                                 <i onclick="confirmDeleteOutput()" class="fa-solid fa-trash-can"></i>
                                 <!-- delete form -->
                                 <div class="confirm-delete-output-popup">
-                                    <span>XOÁ PHIẾU XUẤT ĐÃ CHỌN?</span>
+                                    <span>XOÁ PHIẾU XUẤT ĐÃ CHỌN ?</span>
                                     <p>Bạn có chắc chắn muốn xoá phiếu xuất đã chọn không ?</p>
                                     <div class="confirm-popup-output-button">
                                         <button class="confirm-popup-output-cancel" onclick="closeDeleteOutput()">Huỷ bỏ</button>
-                                        <form method="POST" action="">
-                                        <input type="hidden" value="" name="id">
+                                        <form method="POST" action="../process/delete_output.php">
+                                        <input type="hidden" value="<?php echo $order["export_ID"] ?>" name="id">
                                         <button type = "submit" class="confirm-popup-output-delete">Xác nhận</button>
                                         </form>
                                     </div>

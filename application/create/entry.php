@@ -83,8 +83,8 @@ $products = $getinf->product();
                 <!-- entry information-->
                 <div class="require-info">
                     <div class="output-detail-box">
-                        <label for="id">Mã phiếu nhập</label>
-                        <input name ="id" id="id" type="text">
+                        <label for="import_ID">Mã phiếu nhập</label>
+                        <input name ="import_ID" id="import_ID" type="text">
                     </div>
 
                     <div class="output-detail-box">
@@ -98,7 +98,7 @@ $products = $getinf->product();
 
                         <?php
                         foreach ($users as $user): ?>
-                            <option value=""><?php echo $user["user_ID"] ?></option>
+                            <option value="<?php echo $user["user_ID"] ?>"><?php echo $user["user_ID"] ?></option>
                         <?php endforeach; ?>
 
                         </select>
@@ -110,7 +110,7 @@ $products = $getinf->product();
 
                         <?php
                         foreach ($brands as $brand): ?>
-                            <option value=""><?php echo $brand["supplier_ID"] ?></option>
+                            <option value="<?php echo $brand["supplier_ID"] ?>"><?php echo $brand["supplier_ID"] ?></option>
                         <?php endforeach; ?>
 
                         </select>
@@ -126,7 +126,7 @@ $products = $getinf->product();
 
                         <?php
                         foreach ($products as $product): ?>
-                            <option value=""><?php echo $product["product_ID"] ?></option>
+                            <option value="<?php echo $product["product_ID"] ?>"><?php echo $product["product_ID"] ?></option>
                         <?php endforeach; ?>
 
                         </select>

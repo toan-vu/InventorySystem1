@@ -40,11 +40,11 @@ $brands = $getinf->brand();
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="order.html">Orders</a></h2>
+            <h2><a href="order.php">Orders</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="product.html">Products</a></h2>
+            <h2><a href="product.php">Products</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-face-smile" style="color: var(--white, #b8c7ce);"></i>
@@ -52,7 +52,7 @@ $brands = $getinf->brand();
         </div>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-shop" style="color: var(--white, white);"></i>
-            <h2><a href="brand.html">Brands</a></h2>
+            <h2><a href="brand.php">Brands</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-chart-simple" style="color: var(--white, #b8c7ce);"></i>
@@ -66,7 +66,7 @@ $brands = $getinf->brand();
             <p>Brands</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
-                <li class="home"><a href="index.html">Home</a></li>
+                <li class="home"><a href="index.php">Home</a></li>
                 <li> > </li>
                 <li>Brands</li>
             </ul>
