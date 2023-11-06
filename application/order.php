@@ -122,7 +122,7 @@ $imports = $getinf->import();
                             <td><a href=""></a><?php echo $import["product_ID"] ?></td>
                             <td><a href=""></a><?php echo $import["user_ID"] ?></td>
                             <td>
-                                <a href=""><i class="fa-regular fa-eye"></i></a>
+                                <a href="create/infor_entry.php?id=<?= $import['import_ID'] ?>"><i class="fa-regular fa-eye"></i></a>
                                 <a href="create/change_entry.php?id=<?= $import['import_ID'] ?>"><i class="fa-solid fa-pencil"></i></a>
                                 <i onclick="confirmDelete()" class="fa-solid fa-trash-can"></i>
                             </td>    
@@ -185,7 +185,7 @@ $imports = $getinf->import();
                             <td><a href=""></a><?php echo $order["user_ID"] ?></td>
                             <td><a href=""></a><?php echo $order["customer_ID"] ?></td>
                             <td>
-                                <a href=""><i class="fa-regular fa-eye"></i></a>
+                                <a href="create/infor_output.php?id=<?= $order['export_ID'] ?>"><i class="fa-regular fa-eye"></i></a>
                                 <a href="create/change_output.php?id=<?= $order['export_ID'] ?>"><i class="fa-solid fa-pencil"></i></a>
                                 <i onclick="confirmDeleteOutput()" class="fa-solid fa-trash-can"></i>
                                 <!-- delete form -->

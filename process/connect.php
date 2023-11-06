@@ -30,16 +30,17 @@ abstract class connection {
 }
 }
 class Query extends connection {
+
     // select table information
     public function order() {
-        $sql = "SELECT * FROM export";
+        $sql = "SELECT * FROM export ORDER BY export_ID DESC";
         $stmt = $this->prepareSQL($sql);
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
     public function import() {
-        $sql = "SELECT * FROM import";
+        $sql = "SELECT * FROM import ORDER BY import_ID DESC";
         $stmt = $this->prepareSQL($sql);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -82,6 +83,32 @@ class Query extends connection {
     
     public function selectOutput($data) {
         $sql = "SELECT * FROM export WHERE export_ID = '$data'";
+        $stmt = $this->prepareSQL($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function allEntry($data) {
+        $sql = "SELECT * 
+        FROM import 
+        INNER JOIN user ON import.user_ID = user.user_ID
+        INNER JOIN product ON import.product_ID = product.product_ID
+        INNER JOIN supplier ON import.supplier_ID = supplier.supplier_ID 
+        WHERE import.import_ID = '$data'
+        GROUP BY import.import_ID ";
+        $stmt = $this->prepareSQL($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function allOutput($data) {
+        $sql = "SELECT * 
+        FROM export 
+        INNER JOIN user ON export.user_ID = user.user_ID
+        INNER JOIN product ON export.product_ID = product.product_ID
+        INNER JOIN customer ON export.customer_ID = customer.customer_ID 
+        WHERE export.export_ID = '$data'
+        GROUP BY export.export_ID ";
         $stmt = $this->prepareSQL($sql);
         $stmt->execute();
         return $stmt->fetchAll();

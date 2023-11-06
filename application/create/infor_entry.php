@@ -1,6 +1,8 @@
 <?php
 require_once '../../process/connect.php';
+$id = $_GET['id'];
 $getinf = new Query();
+$entrys = $getinf->allEntry($id);
 $users = $getinf->user();
 $brands = $getinf->brand();
 $products = $getinf->product();
@@ -14,7 +16,7 @@ $products = $getinf->product();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="../../css/order.css">
-    <link rel="stylesheet" href="../../css/output.css">
+    <link rel="stylesheet" href="../../css/infor.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Inventory System Entry</title>
 </head>
@@ -35,7 +37,7 @@ $products = $getinf->product();
         <h1>Inventory System</h1>
         <div class="sidebar-box">
             <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
-            <h2><a href="../index.php">Home</a></h2>
+            <h2><a href="../index.php">Trang chủ</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
@@ -66,88 +68,84 @@ $products = $getinf->product();
     <!-- content -->
     <div class="content">
         <div class="content-title">
-            <p>Entry</p>
+            <p>Entry information</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
                 <li class="home"><a href="../index.php">Home</a></li>
                 <li> > </li>
                 <li>Import/Export</li>
                 <li> > </li>
-                <li>Entry</li>
+                <li>Entry information</li>
             </ul>
         </div>
 
         <!-- Dashboard orders information -->
+        <?php
+            foreach ($entrys as $entry): ?>
         <div class="output-detail">
-            <form action="../../process/process_entry.php" method="post" autocomplete="off" enctype="multipart/form-data">
                 <!-- entry information-->
                 <div class="require-info">
+                    <p>Thông tin cơ bản</p>
                     <div class="output-detail-box">
                         <label for="import_ID">Mã phiếu nhập</label>
-                        <input name ="import_ID" id="import_ID" type="text">
+                        <input name ="import_ID" id="import_ID" type="text" readonly value = "<?= $entry['import_ID'] ?>">
                     </div>
 
                     <div class="output-detail-box">
                         <label for="date">Ngày nhập phiếu</label>
-                        <input name ="date" id="date" type="date">
+                        <input name ="date" id="date" type="date" readonly value = "<?= $entry['import_date'] ?>">
                     </div>
 
                     <div class="output-detail-box">
                         <label for="user">Mã nhân viên</label>
-                        <select name="user" id="user">
-                        <option value="">Chọn mã nhân viên</option>
-                        <?php
-                        foreach ($users as $user): ?>
-                            <option value="<?php echo $user["user_ID"] ?>"><?php echo $user["user_ID"] ?></option>
-                        <?php endforeach; ?>
+                        <input name ="date" id="date" type="" readonly value = "<?= $entry['user_ID']?>">
+                    </div>
 
-                        </select>
+                    <div class="output-detail-box">
+                        <label for="user">Tên nhân viên</label>
+                        <input name ="date" id="date" type="" readonly value = "<?= $entry['user_first_name']. ' '.$entry['user_last_name'] ?>">
                     </div>
 
                     <div class="output-detail-box">
                         <label for="brand">Mã nhà cung cấp</label>
-                        <select name="brand" id="brand">
-                        <option value="">Chọn nhà cung cấp</option>
-                        <?php
-                        foreach ($brands as $brand): ?>
-                            <option value="<?php echo $brand["supplier_ID"] ?>"><?php echo $brand["supplier_ID"] ?></option>
-                        <?php endforeach; ?>
-
-                        </select>
+                        <input name ="date" id="date" type="" readonly value = "<?= $entry['supplier_ID']?>">
                     </div>
+
+                    <div class="output-detail-box">
+                        <label for="brand">Tên nhà cung cấp</label>
+                        <input name ="date" id="date" type="" readonly value = "<?= $entry['supplier_name']?>">
+                    </div>
+
+                    <div class="output-detail-box">
+                        <label for="brand">Địa chỉ nhà cung cấp</label>
+                        <input name ="date" id="date" type="" readonly value = "<?= $entry['supplier_address']?>">
+                    </div>
+                    
                     
                 </div>
 
                 <!-- dynamic input -->
                 <div class="dynamic-input">
-                    <div class="output-detail-box">
-                        <label for="product">Mã sản phẩm</label>
-                        <select name="product" id="product">
-                        <option value="">Chọn mã sản phẩm</option>
-                        <?php
-                        foreach ($products as $product): ?>
-                            <option value="<?php echo $product["product_ID"] ?>"><?php echo $product["product_ID"] ?></option>
-                        <?php endforeach; ?>
+                    <p>Thông tin đơn nhập</p>
+                    
+                    <table>
+                        <tr class="order-box-select">
+                            <th>Mã sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá nhập</th>
+                            <th>Số lượng nhập</th>
+                        </tr>
 
-                        </select>
-                    </div>
-
-                    <div class="output-detail-box">
-                        <label for="price">Giá nhập</label>
-                        <input name ="price" id="price" type="text">
-                    </div>
-
-                    <div class="output-detail-box">
-                        <label for="number">Số lượng nhập</label>
-                        <input name ="number" id="number" type="number">
-                    </div>
-
+                        <tr>
+                            <td><a href=""></a><?php echo $entry["product_ID"] ?></td>
+                            <td><a href=""></a><?php echo $entry["product_name"] ?></td>
+                            <td><a href=""></a><?php echo $entry["import_price"] ?></td>
+                            <td><a href=""></a><?php echo $entry["import_quantity"] ?></td>                         
+                        </tr>
+                    </table>
                 </div>    
-                <i class="add">+</i>
-                <button type = "submit" name = "submit">Thêm mới</button>
-            </form>
         </div>
-
+        <?php endforeach; ?>
         
     </div>
     <script src="../../js/index.js"></script>
