@@ -188,6 +188,7 @@ $imports = $getinf->import();
                                 <a href="create/infor_output.php?id=<?= $order['export_ID'] ?>"><i class="fa-regular fa-eye"></i></a>
                                 <a href="create/change_output.php?id=<?= $order['export_ID'] ?>"><i class="fa-solid fa-pencil"></i></a>
                                 <i onclick="confirmDeleteOutput()" class="fa-solid fa-trash-can"></i>
+                            </td>    
                                 <!-- delete form -->
                                 <div class="confirm-delete-output-popup">
                                     <span>XOÁ PHIẾU XUẤT ĐÃ CHỌN ?</span>
@@ -201,7 +202,7 @@ $imports = $getinf->import();
                                     </div>
                                 </div>
 
-                            </td>
+                            
                         </tr>
                         <?php endforeach; ?>
                     </table>

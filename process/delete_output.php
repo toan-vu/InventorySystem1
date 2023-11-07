@@ -10,5 +10,5 @@ $data = [
 ];
 
 $getinf = new Query();
-    $products = $getinf->deleteEntry($data);
+    $products = $getinf->deleteOutput($data);
 redirectEntry();

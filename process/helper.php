@@ -12,3 +12,7 @@ function redirectEntry() {
 function redirectProduct() {
     redirect('../application/product.php');
 }
+
+function redirectlogin() {
+    redirect('user/dangnhap.php');
+}

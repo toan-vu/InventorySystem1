@@ -67,7 +67,7 @@ $customers = $getinf->customer();
     <!-- content -->
     <div class="content">
         <div class="content-title">
-            <p>Dashboard</p>
+            <p>Output</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
                 <li class="home"><a href="../index.php">Home</a></li>
@@ -96,7 +96,7 @@ $customers = $getinf->customer();
                     <div class="output-detail-box">
                         <label for="outputID">Mã nhân viên</label>
                         <select name="employeeID" id="employeeID">
-
+                        <option value="">Chọn mã nhân viên</option>
                         <?php
                         foreach ($users as $user): ?>
                             <option value="<?php echo $user["user_ID"] ?>"><?php echo $user["user_ID"] ?></option>
@@ -108,7 +108,7 @@ $customers = $getinf->customer();
                     <div class="output-detail-box">
                         <label for="outputID">Mã khách hàng</label>
                         <select name="customer" id="customer">
-
+                        <option value="">Chọn mã Khách hàng</option>
                         <?php
                         foreach ($customers as $customer): ?>
                             <option value="<?php echo $customer["customer_ID"] ?>"><?php echo $customer["customer_ID"] ?></option>
@@ -124,7 +124,7 @@ $customers = $getinf->customer();
                     <div class="output-detail-box">
                         <label for="outputID">Mã sản phẩm</label>
                         <select name="productID" id="productID">
-
+                        <option value="">Chọn mã sản phẩm</option>
                         <?php
                         foreach ($products as $product): ?>
                             <option value="<?php echo $product["product_ID"] ?>"><?php echo $product["product_ID"] ?></option>
@@ -140,7 +140,7 @@ $customers = $getinf->customer();
 
                     <div class="output-detail-box">
                         <label for="number">Số lượng xuất</label>
-                        <input name ="number" id="number" type="number">
+                        <input name ="number" id="number" type="number" min = "0">
                     </div>
 
                 </div>    

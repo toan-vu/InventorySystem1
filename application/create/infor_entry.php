@@ -145,11 +145,26 @@ $products = $getinf->product();
                     </table>
                 </div>    
         </div>
+        <button type = "button" onclick = "confirmDelete()" class="popup">Xoá</button>
+
+        <div class="confirm-delete-popup">
+                <span>XOÁ PHIẾU NHẬP ĐÃ CHỌN?</span>
+                <p>Bạn có chắc chắn muốn xoá phiếu nhập đã chọn không ?</p>
+                <div class="confirm-popup-button">
+                    <button class="confirm-popup-cancel" onclick="closeDeletePopup()">Huỷ bỏ</button>
+
+                    <form method="post" action="../../process/delete_entry.php">
+                    <input type="hidden" value="<?php echo $entry["import_ID"] ?>" name="id">
+                    <button type = "submit" class="confirm-popup-delete">Xác nhận</button>
+                    </form>
+                </div>
+            </div>
         <?php endforeach; ?>
         
     </div>
     <script src="../../js/index.js"></script>
     <script src="../../js/order.js"></script>
     <script src="../../js/output.js"></script>
+    <script src="../../js/deleteConfirm.js"></script>
 </body>
 </html>

@@ -3,8 +3,9 @@ require_once 'connect.php';
 require_once 'helper.php';
 
 $request = $_POST;
-$error = array();
-$error[] = $request['import_ID'];
+$value = $_POST['import_ID'];
+
+$id = strlen($value);
 
 if(isset($_POST["submit"])){
     $id = $_POST['import_ID'];
@@ -13,69 +14,111 @@ if(isset($_POST["submit"])){
     echo
       "
       <script>
-        alert('Hãy nhập mã Nhà cung cấp');
+        alert('Mã nhà cung cấp không được để trống.');
         document.location.href = '../application/create/entry.php';
       </script>
       ";
-    } else if($request['date'] == "") {
-        echo
-        "
-        <script>
-          alert('Hãy nhập Ngày tháng');
-          document.location.href = '../application/create/entry.php';
-        </script>
-        ";
-        } else if($request['price'] == "") {
-            echo
-            "
-            <script>
-            alert('Hãy nhập Giá');
-            document.location.href = '../application/create/entry.php';
-            </script>
-            ";
-            } else if($request['number'] == "") {
-                echo
-                "
-                <script>
-                alert('Hãy nhập Số lượng');
-                document.location.href = '../application/create/entry.php';
-                </script>
-                ";
-                } else if($request['product'] == "") {
-                    echo
-                    "
-                    <script>
-                    alert('Hãy nhập Mã sản phẩm');
-                    document.location.href = '../application/create/entry.php';
-                    </script>
-                    ";
-                    } else if($request['user'] == "") {
-                        echo
-                        "
-                        <script>
-                        alert('Hãy nhập Mã nhân viên');
-                        document.location.href = '../application/create/entry.php';
-                        </script>
-                        ";
-                        } else if($request['import_ID'] == "") {
-                            echo
-                            "
-                            <script>
-                            alert('Hãy nhập Mã đơn hàng');
-                            document.location.href = '../application/create/entry.php';
-                            </script>
-                            ";
-                            } else if(str_word_count($request['import_ID']) != 6) {
-                                echo
-                                "
-                                <script>
-                                alert('mã đơn hàng cần 6 ký tự.');
-                                document.location.href = '../application/create/entry.php';
-                                </script>
-                                ";
-                                }
-
-}
+    } 
+    else if($request['date'] == "") {
+    echo
+    "
+    <script>
+      alert('Ngày nhập không được để trống.');
+      document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if($request['price'] == "") {
+    echo
+    "
+    <script>
+    alert('Giá nhập không được để trống.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if($request['price'] < 0) {
+    echo
+    "
+    <script>
+    alert('Giá nhập không hợp lệ.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    }
+    else if(preg_match('/[^0-9]/', $request['price'])) {
+    echo
+    "
+    <script>
+    alert('Giá nhập không hợp lệ.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    }
+    else if($request['number'] == "") {
+    echo
+    "
+    <script>
+    alert('Số lượng nhập không được để trống.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if($request['number'] == 0) {
+    echo
+    "
+    <script>
+    alert('Số lượng nhập không hợp lệ.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if($request['product'] == "") {
+    echo
+    "
+    <script>
+    alert('Mã sản phẩm không được để trống');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if($request['user'] == "") {
+    echo
+    "
+    <script>
+    alert('Mã nhân viên không được để trống.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if($request['import_ID'] == "") {
+    echo
+    "
+    <script>
+    alert('Mã đơn hàng không được để trống.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if(strlen($value) != 6) {
+    echo
+    "
+    <script>
+    alert('Mã phiếu nhập cần 6 ký tự.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    } 
+    else if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $value)) {
+    echo
+    "
+    <script>
+    alert('Mã phiếu nhập không hợp lệ.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    }
+    else {
 
 $data = [
     'import_ID' => $request['import_ID'],
@@ -89,4 +132,12 @@ $data = [
 
 $getinf = new Query();
     $products = $getinf->createEntry($data);
-redirectEntry();
+    echo
+      "
+      <script>
+      alert('Tạo phiếu nhập thành công.');
+      document.location.href = '../application/order.php';
+      </script>
+      ";
+}
+}

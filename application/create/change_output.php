@@ -148,7 +148,7 @@ $customers = $getinf->customer();
 
                     <div class="output-detail-box">
                         <label for="number">Số lượng xuất</label>
-                        <input name ="number" id="number" type="number" value = "<?= $output['export_quantity'] ?>">
+                        <input name ="number" id="number" type="number" value = "<?= $output['export_quantity'] ?>" min = "0">
                     </div>
 
                 </div>    

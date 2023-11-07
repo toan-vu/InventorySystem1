@@ -147,7 +147,7 @@ $products = $getinf->product();
 
                     <div class="output-detail-box">
                         <label for="number">Số lượng nhập</label>
-                        <input name ="number" id="number" type="number" value = "<?= $entry['import_quantity'] ?>">
+                        <input name ="number" id="number" type="number" value = "<?= $entry['import_quantity'] ?>" min = "0">
                     </div>
 
                 </div>    

@@ -142,11 +142,26 @@ $outputs = $getinf->allOutput($id);
                     </table>
                 </div>    
         </div>
+        <button type = "button" onclick = "confirmDelete()" class="popup">Xoá</button>
+
+        <div class="confirm-delete-popup">
+                <span>XOÁ PHIẾU XUẤT ĐÃ CHỌN?</span>
+                <p>Bạn có chắc chắn muốn xoá phiếu xuất đã chọn không ?</p>
+                <div class="confirm-popup-button">
+                    <button class="confirm-popup-cancel" onclick="closeDeletePopup()">Huỷ bỏ</button>
+
+                    <form method="post" action="../../process/delete_output.php">
+                    <input type="hidden" value="<?php echo $output["export_ID"] ?>" name="id">
+                    <button type = "submit" class="confirm-popup-delete">Xác nhận</button>
+                    </form>
+                </div>
+            </div>
         <?php endforeach; ?>
         
     </div>
     <script src="../../js/index.js"></script>
     <script src="../../js/order.js"></script>
     <script src="../../js/output.js"></script>
+    <script src="../../js/deleteConfirm.js"></script>
 </body>
 </html>
