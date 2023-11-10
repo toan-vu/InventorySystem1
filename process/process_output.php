@@ -26,15 +26,6 @@ if(isset($_POST["submit"])){
         </script>
         ";
     } 
-    else if(strlen($value) != 6) {
-    echo
-    "
-    <script>
-    alert('Mã phiếu xuất cần 6 ký tự.');
-    document.location.href = '../application/create/output.php';
-    </script>
-    ";
-    } 
     else if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $value)) {
     echo
     "
@@ -44,6 +35,15 @@ if(isset($_POST["submit"])){
     </script>
     ";
     }
+    else if(strlen($value) != 6) {
+    echo
+    "
+    <script>
+    alert('Mã phiếu xuất cần 6 ký tự.');
+    document.location.href = '../application/create/output.php';
+    </script>
+    ";
+    } 
     else if($request['employeeID'] == "") {
     echo
         "
@@ -80,7 +80,7 @@ if(isset($_POST["submit"])){
         </script>
         ";
     } 
-    else if($request['price'] < 0) {
+    else if($request['price'] <= 0) {
     echo
     "
     <script>
@@ -102,7 +102,7 @@ if(isset($_POST["submit"])){
     echo
     "
     <script>
-    alert('Số lượng nhập không được để trống.');
+    alert('Số lượng xuất không được để trống.');
     document.location.href = '../application/create/output.php';
     </script>
     ";
@@ -111,7 +111,7 @@ if(isset($_POST["submit"])){
     echo
     "
     <script>
-    alert('Số lượng nhập không hợp lệ.');
+    alert('Số lượng xuất không hợp lệ.');
     document.location.href = '../application/create/output.php';
     </script>
     ";

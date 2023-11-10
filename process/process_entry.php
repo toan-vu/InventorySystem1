@@ -4,6 +4,8 @@ require_once 'helper.php';
 
 $request = $_POST;
 $value = $_POST['import_ID'];
+$time = getdate();
+$itime = $request['date'];
 
 $id = strlen($value);
 
@@ -23,7 +25,7 @@ if(isset($_POST["submit"])){
     echo
     "
     <script>
-      alert('Ngày nhập không được để trống.');
+      alert('Ngày nhập phiếu không được để trống.');
       document.location.href = '../application/create/entry.php';
     </script>
     ";
@@ -37,7 +39,7 @@ if(isset($_POST["submit"])){
     </script>
     ";
     } 
-    else if($request['price'] < 0) {
+    else if($request['price'] <= 0) {
     echo
     "
     <script>
@@ -95,16 +97,7 @@ if(isset($_POST["submit"])){
     echo
     "
     <script>
-    alert('Mã đơn hàng không được để trống.');
-    document.location.href = '../application/create/entry.php';
-    </script>
-    ";
-    } 
-    else if(strlen($value) != 6) {
-    echo
-    "
-    <script>
-    alert('Mã phiếu nhập cần 6 ký tự.');
+    alert('Mã phiếu nhập không được để trống.');
     document.location.href = '../application/create/entry.php';
     </script>
     ";
@@ -118,6 +111,15 @@ if(isset($_POST["submit"])){
     </script>
     ";
     }
+  else if(strlen($value) != 6) {
+    echo
+    "
+    <script>
+    alert('Mã phiếu nhập cần 6 ký tự.');
+    document.location.href = '../application/create/entry.php';
+    </script>
+    ";
+    }   
     else {
 
 $data = [
