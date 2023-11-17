@@ -27,7 +27,7 @@
         <h1>Inventory System</h1>
         <div class="sidebar-box">
             <i class="fa-solid fa-house" style="color: #b8c7ce;"></i>
-            <h2><a href="../index.html">Home</a></h2>
+            <h2><a href="../index.php">Home</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-user" style="color: var(--white, #b8c7ce);"></i>
@@ -35,11 +35,11 @@
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-sack-dollar" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="../order.html">Import/Export</a></h2>
+            <h2><a href="../order.php">Import/Export</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-gear" style="color: var(--white, #b8c7ce);"></i>
-            <h2><a href="../product.html">Products</a></h2>
+            <h2><a href="../product.php">Products</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-face-smile" style="color: var(--white, #b8c7ce);"></i>
@@ -47,7 +47,7 @@
         </div>
         <div class="sidebar-box-active">
             <i class="fa-solid fa-shop" style="color: var(--white, white);"></i>
-            <h2><a href="../brand.html">Brands</a></h2>
+            <h2><a href="../brand.php">Brands</a></h2>
         </div>
         <div class="sidebar-box">
             <i class="fa-solid fa-chart-simple" style="color: var(--white, #b8c7ce);"></i>
@@ -61,7 +61,7 @@
             <p>Add brand</p>
             <ul>
                 <i class="fa-solid fa-palette"></i>
-                <li class="home"><a href="../index.html">Home</a></li>
+                <li class="home"><a href="../index.php">Home</a></li>
                 <li> > </li>
                 <li>Brands</li>
                 <li> > </li>

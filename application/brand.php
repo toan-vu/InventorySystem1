@@ -75,7 +75,7 @@ $brands = $getinf->brand();
         <!-- Dashboard orders information -->
         <div class="order-list">
             <div class="add-order">
-                <button class="add-order-button" name=""><a href="create/add_brand.html">Thêm nhà cung cấp</a></button>
+                <button class="add-order-button" name=""><a href="create/add_brand.php">Thêm nhà cung cấp</a></button>
             </div>
             <div class="order-list-option">
                 <button class="order-list-button active button" name="">Danh sách nhà cung cấp</button>
